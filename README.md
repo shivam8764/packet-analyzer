@@ -1,6 +1,6 @@
 # Packet Analyzer
 
-![CI](https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/shivam8764/packet-analyzer/actions/workflows/ci.yml/badge.svg)
 
 A lightweight network packet analyzer written in C using libpcap. Captures live traffic and dissects Ethernet, IPv4, TCP, UDP, and ICMP layers with colored, human-readable output.
 
