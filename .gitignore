@@ -1,0 +1,7 @@
+build/
+analyzer
+test_runner
+capture.log
+*.o
+*.dSYM/
+.DS_Store

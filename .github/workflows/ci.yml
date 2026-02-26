@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpcap-dev valgrind gcc make
+
+      - name: Build
+        run: make all
+
+      - name: Run tests
+        run: make test
+
+      - name: Valgrind memory check
+        run: |
+          valgrind --leak-check=full --error-exitcode=1 ./test_runner
+
+      - name: Compile with -Werror
+        run: |
+          make clean
+          make all CFLAGS="-Wall -Wextra -Werror -g"
